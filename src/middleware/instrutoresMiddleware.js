@@ -25,7 +25,7 @@ const verificarNomeEmail = (req, res, next) => {
 const verificarStatus = (req, res, next) => {
     const { status } = req.body;
 
-    if (!status) {
+    if (status === undefined) {
         return res.status(400).json({ "message": "O status do instrutor é obrigatório :p" })
     }
 
