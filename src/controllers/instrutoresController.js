@@ -46,4 +46,20 @@ const atualizarStatusInstrutor = (req, res) => {
     return res.status(203).send();
 };
 
-export { listarInstrutores, listarInstrutorPorId, cadastrarInstrutor, atualizarInstrutor, atualizarStatusInstrutor };
+const deletarInstrutor = (req, res) => {
+    const { id } = req.params;
+    const instrutor = bancoDeDados.instrutores.find(instrutor => instrutor.id === Number(id));
+    const index = bancoDeDados.instrutores.indexOf(instrutor);
+    bancoDeDados.instrutores.splice(index, 1);
+
+    res.status(204).send();
+}
+
+export { 
+    listarInstrutores, 
+    listarInstrutorPorId, 
+    cadastrarInstrutor, 
+    atualizarInstrutor, 
+    atualizarStatusInstrutor, 
+    deletarInstrutor 
+};
